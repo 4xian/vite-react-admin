@@ -1,0 +1,41 @@
+.minGaplessWrap {
+    position: relative;
+    overflow: hidden;
+}
+.scrollEmpty {
+    height: 100%;
+    font-size: 14px;
+}
+.scrollControls {
+    position: absolute;
+    z-index: 5;
+    cursor: pointer;
+}
+.leftControls {
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+}
+
+.rightControls {
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+}
+
+.upControls {
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.downControls {
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.gaplessScrollContent {
+    display: flex;
+    height: 100%;
+}

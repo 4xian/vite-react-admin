@@ -1,21 +1,36 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "useDefineForClassFields": true,
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "allowJs": false,
-    "skipLibCheck": false,
-    "esModuleInterop": false,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
-  },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+    "compilerOptions": {
+        "target": "ESNext",
+        "useDefineForClassFields": true,
+        "lib": ["DOM", "DOM.Iterable", "ESNext"],
+        "allowJs": false,
+        "baseUrl": "./",
+        "skipLibCheck": false,
+        "esModuleInterop": false,
+        "allowSyntheticDefaultImports": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "jsx": "react-jsx",
+        "removeComments": true,
+        "noImplicitAny": false,
+        "typeRoots": ["node_modules/@types", "./typings"],
+        "types": ["vite-plugin-svg-icons/client"],
+        "paths": {
+            "@/": ["src/*"]
+        }
+    },
+    "include": ["src", "typings", "node_modules/@types"],
+    "exclude": ["docs", "dist"],
+    "references": [{
+        "path": "./tsconfig.node.json"
+    }],
+    "typeAcquisition": {
+        "enable": false,
+        "include": ["js-cookie", "lodash-es"]
+    }
 }

@@ -5,6 +5,8 @@
         "lib": ["DOM", "DOM.Iterable", "ESNext"],
         "allowJs": false,
         "baseUrl": "./",
+        "outDir": "./",
+        "rootDir": "./",
         "skipLibCheck": false,
         "esModuleInterop": false,
         "allowSyntheticDefaultImports": true,
@@ -21,7 +23,8 @@
         "typeRoots": ["node_modules/@types", "./typings"],
         "types": ["vite-plugin-svg-icons/client"],
         "paths": {
-            "@/": ["src/*"]
+            "@/*": ["src/*"],
+            "#/*": ["typings/*"]
         }
     },
     "include": ["src", "typings", "node_modules/@types"],

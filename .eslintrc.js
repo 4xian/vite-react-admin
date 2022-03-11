@@ -31,6 +31,7 @@ module.exports = {
     'simple-import-sort/imports': 'warn',
     'simple-import-sort/exports': 'warn',
     '@typescript-eslint/ban-ts-comment': 'off',
+    '@typescript-eslint/no-namespace': 'off',
     //
     'no-use-before-define': 'off',
     'accessor-pairs': 2,

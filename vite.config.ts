@@ -14,6 +14,8 @@ import legacy from '@vitejs/plugin-legacy'
 // 让 vite 能够使用 TypeScript 的路径映射解析导入
 import tsconfigPaths from 'vite-tsconfig-paths'
 
+import { viteMockServe } from 'vite-plugin-mock'
+
 // https://vitejs.dev/config/
 export default ({ command }: ConfigEnv): UserConfigExport => {
   const root = process.cwd()
@@ -31,7 +33,19 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
         iconDirs: [resolve(root, 'src/assets/svg')],
         symbolId: 'svg-[dir]-[name]'
       }),
-      legacy({ targets: ['defaults', 'not IE 11'] })
+      legacy({ targets: ['defaults', 'not IE 11'] }),
+      // mock
+      viteMockServe({
+        supportTs: true,
+        mockPath: './src/mocks',
+        logger: true,
+        localEnabled: command === 'serve',
+        prodEnabled: command !== 'serve',
+        injectCode: `
+            import { initMockServer } from './src/mocks.ts';
+            initMockServer();
+          `
+      })
     ],
     css: {
       preprocessorOptions: {
@@ -45,7 +59,8 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
     },
     resolve: {
       alias: {
-        '@': resolve('src')
+        '@': resolve('src'),
+        '#': resolve('typings')
       }
     },
     server: {
